@@ -57,8 +57,8 @@
     <Compile Include="View\ResultWindow.xaml.cs">
       <DependentUpon>ResultWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\CountureSelection.xaml.cs">
-      <DependentUpon>CountureSelection.xaml</DependentUpon>
+    <Compile Include="View\CounturSelection.xaml.cs">
+      <DependentUpon>CounturSelection.xaml</DependentUpon>
     </Compile>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -68,11 +68,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Helpers\CountureHelper.cs" />
+    <Compile Include="Helpers\CounturHelper.cs" />
     <Compile Include="Helpers\Miary\IComparasion.cs" />
-    <Compile Include="Model\Counture.cs" />
+    <Compile Include="Model\Contour.cs" />
     <Compile Include="Model\Mask.cs" />
-    <Compile Include="Model\CounturePoint.cs" />
+    <Compile Include="Model\CounturPoint.cs" />
     <Compile Include="Model\Result.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -82,7 +82,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\CountureSelection.xaml">
+    <Page Include="View\CounturSelection.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

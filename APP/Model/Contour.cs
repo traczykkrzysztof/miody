@@ -3,9 +3,9 @@ using System.Drawing;
 
 namespace APP.Model
 {
-    public class Counture
+    public class Contour
     {
-        public HashSet<CounturePoint> CountureSet { get; set; }
+        public HashSet<CounturPoint> CounturSet { get; set; }
         public Bitmap Bitmap { get; set; }
     }
 }

@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace APP.Model
 {
-    public class CounturePoint
+    public class CounturPoint
     {
         public int Type { get; set; }
 

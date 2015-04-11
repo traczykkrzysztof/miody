@@ -5,11 +5,11 @@ using APP.Model;
 namespace APP.View
 {
     /// <summary>
-    /// Interaction logic for CountureSelection.xaml
+    /// Interaction logic for CounturSelection.xaml
     /// </summary>
-    public partial class CountureSelection : Window
+    public partial class CounturSelection : Window
     {
-        public CountureSelection( Contour a)
+        public CounturSelection( Contour a)
         {
             InitializeComponent();
         }

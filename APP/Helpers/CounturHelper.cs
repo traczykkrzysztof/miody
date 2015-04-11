@@ -5,7 +5,7 @@ using APP.Model;
 
 namespace APP.Helpers
 {
-    class CountureHelper
+    class CounturHelper
     {
         public Contour LoadBitmap(string patch)
         {
@@ -28,12 +28,12 @@ namespace APP.Helpers
         }
 
 
-        public IQueryable<CounturPoint> GetPointsInsideConture(Contour kontur)
+        public IQueryable<CounturPoint> GetPointsInsideContur(Contour kontur)
         {
             throw new NotImplementedException();
         }
 
-        public Mask GetMaskFromCounture(Contour kontur)
+        public Mask GetMaskFromCountur(Contour kontur)
         {
             throw new NotImplementedException();
         }
