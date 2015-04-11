@@ -9,7 +9,7 @@ namespace APP.View
     /// </summary>
     public partial class CountureSelection : Window
     {
-        public CountureSelection( Counture a)
+        public CountureSelection( Contour a)
         {
             InitializeComponent();
         }

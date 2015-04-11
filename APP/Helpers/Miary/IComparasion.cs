@@ -4,6 +4,6 @@ namespace APP.Helpers.Miary
 {
     interface IComparasion
     {
-        Result GetResult(Counture a,Counture b);
+        Result GetResult(Contour a,Contour b);
     }
 }
