@@ -18,3 +18,17 @@ C:\Users\Sylwekqaz\Documents\Visual Studio 2013\Projects\Inżynieria Projekt\Mio
 C:\Users\kamil\Documents\4 semestr studia\inzynieria\miodyz\APP\bin\Debug\APP.exe.config
 C:\Users\kamil\Documents\4 semestr studia\inzynieria\miodyz\APP\obj\Debug\APP.exe
 C:\Users\kamil\Documents\4 semestr studia\inzynieria\miodyz\APP\obj\Debug\APP.pdb
+C:\Users\kamil\Documents\4 semestr studia\inzynieria\miodyz\APP\bin\Debug\APP.exe
+C:\Users\kamil\Documents\4 semestr studia\inzynieria\miodyz\APP\bin\Debug\APP.pdb
+C:\Users\kamil\Documents\4 semestr studia\inzynieria\miodyz\APP\obj\Debug\APP.csprojResolveAssemblyReference.cache
+C:\Users\kamil\Documents\4 semestr studia\inzynieria\miodyz\APP\obj\Debug\View\MainWindow.baml
+C:\Users\kamil\Documents\4 semestr studia\inzynieria\miodyz\APP\obj\Debug\View\ResultWindow.baml
+C:\Users\kamil\Documents\4 semestr studia\inzynieria\miodyz\APP\obj\Debug\View\CounturSelection.baml
+C:\Users\kamil\Documents\4 semestr studia\inzynieria\miodyz\APP\obj\Debug\View\MainWindow.g.cs
+C:\Users\kamil\Documents\4 semestr studia\inzynieria\miodyz\APP\obj\Debug\View\ResultWindow.g.cs
+C:\Users\kamil\Documents\4 semestr studia\inzynieria\miodyz\APP\obj\Debug\View\CounturSelection.g.cs
+C:\Users\kamil\Documents\4 semestr studia\inzynieria\miodyz\APP\obj\Debug\App.g.cs
+C:\Users\kamil\Documents\4 semestr studia\inzynieria\miodyz\APP\obj\Debug\APP_MarkupCompile.cache
+C:\Users\kamil\Documents\4 semestr studia\inzynieria\miodyz\APP\obj\Debug\APP.g.resources
+C:\Users\kamil\Documents\4 semestr studia\inzynieria\miodyz\APP\obj\Debug\APP.Properties.Resources.resources
+C:\Users\kamil\Documents\4 semestr studia\inzynieria\miodyz\APP\obj\Debug\APP.csproj.GenerateResource.Cache

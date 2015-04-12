@@ -7,6 +7,17 @@ namespace APP.Helpers
 {
     class CounturHelper
     {
+
+        public IQueryable<CounturPoint> GetPointsInsideContur(Contour kontur)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Mask GetMaskFromCountur(Contour kontur)
+        {
+            throw new NotImplementedException();
+        }
+
         //public Contour LoadBitmap(string patch)
         //{
         //    throw new NotImplementedException();
@@ -28,15 +39,7 @@ namespace APP.Helpers
         //}
 
 
-        public IQueryable<CounturPoint> GetPointsInsideContur(Contour kontur)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Mask GetMaskFromCountur(Contour kontur)
-        {
-            throw new NotImplementedException();
-        }
+      
        
     }
 }

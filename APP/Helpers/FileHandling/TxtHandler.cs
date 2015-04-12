@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 
 namespace APP.Helpers.FileHandling
 {
-    class TxtLoader
+    class TxtHandler
     {
         public Contour LoadTxt(string patch)
         {
-            throw new NotImplementedException();
+            Contour wynikContour = null;
+
+            return wynikContour;
         }
     }
 }
