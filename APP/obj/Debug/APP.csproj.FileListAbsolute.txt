@@ -15,3 +15,6 @@ C:\Users\Sylwekqaz\Documents\Visual Studio 2013\Projects\Inżynieria Projekt\Mio
 C:\Users\Sylwekqaz\Documents\Visual Studio 2013\Projects\Inżynieria Projekt\Miody\APP\obj\Debug\View\CountureSelection.baml
 C:\Users\Sylwekqaz\Documents\Visual Studio 2013\Projects\Inżynieria Projekt\Miody\APP\obj\Debug\View\ResultWindow.g.cs
 C:\Users\Sylwekqaz\Documents\Visual Studio 2013\Projects\Inżynieria Projekt\Miody\APP\obj\Debug\View\CountureSelection.g.cs
+C:\Users\kamil\Documents\4 semestr studia\inzynieria\miodyz\APP\bin\Debug\APP.exe.config
+C:\Users\kamil\Documents\4 semestr studia\inzynieria\miodyz\APP\obj\Debug\APP.exe
+C:\Users\kamil\Documents\4 semestr studia\inzynieria\miodyz\APP\obj\Debug\APP.pdb
