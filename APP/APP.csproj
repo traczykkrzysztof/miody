@@ -57,6 +57,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Helpers\FileHandling\BitmapLoader.cs" />
+    <Compile Include="Helpers\FileHandling\BitmapSaver.cs" />
+    <Compile Include="Helpers\FileHandling\TxtLoader.cs" />
+    <Compile Include="Helpers\FileHandling\TxtSaver.cs" />
     <Compile Include="View\ResultWindow.xaml.cs">
       <DependentUpon>ResultWindow.xaml</DependentUpon>
     </Compile>
