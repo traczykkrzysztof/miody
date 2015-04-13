@@ -1,6 +1,7 @@
 ﻿using APP.Model;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -12,19 +13,28 @@ namespace APP.Helpers.FileHandling
         // TxtHandler -> przyjmuje plik, jesli jest txt i go zmienia na kontur
         // BitmapHandler -> przyjmuje plik, jesli jest .jpg  i go zmienia na kontur
     {
+        private TxtHandler _txtHandler;
+        private BitmapHandler _bitmapHandler;
+
+        public ContourLoader(BitmapHandler bitmapHandler, TxtHandler txtHandler)
+        {
+            _bitmapHandler = bitmapHandler;
+            _txtHandler = txtHandler;
+        }
+
         public Contour LoadContour(string path)
         {
            
             Contour loadedContour;
             if (path.Contains("txt"))
             {
-                TxtHandler txt  = new TxtHandler();
-                loadedContour = txt.LoadTxt(path);
+                StreamReader reader = new StreamReader(path);
+                loadedContour = _txtHandler.LoadTxt(reader);
             }
             else
             {
-                BitmapHandler bit = new BitmapHandler();
-                loadedContour =  bit.LoadBitmap(path);
+                Bitmap bitmap = new Bitmap(path);
+                loadedContour = _bitmapHandler.LoadBitmap(bitmap);
             }
             return loadedContour;
         }

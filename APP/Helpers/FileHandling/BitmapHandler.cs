@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,8 +10,9 @@ namespace APP.Helpers.FileHandling
 {
     class BitmapHandler 
     {
-        public Contour LoadBitmap(string path)
+        public Contour LoadBitmap(Bitmap path)
         {
+            throw new NotImplementedException();
             Contour wynikContour = null;
 
             return wynikContour;
