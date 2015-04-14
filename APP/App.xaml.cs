@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using APP.Helpers.FileHandling;
 using Ninject;
 
 namespace APP
@@ -27,12 +28,18 @@ namespace APP
         private void ConfigureContainer()
         {
             this._container = new StandardKernel();
-            //container.Bind<IWeapon>().To<Sword>().InTransientScope();
+
+            //Helpers
+                //File FileHandling
+                    _container.Bind<IBitmapHandler>().To<BitmapHandler>();
+                    _container.Bind<ITxtHandler>().To<TxtHandler>();
+                    _container.Bind<IContourLoader>().To<ContourLoader>();
+
         }
 
         private void ComposeObjects()
         {
-            Current.MainWindow = this._container.Get<MainWindow>();
+            Current.MainWindow = _container.Get<MainWindow>();
         }
     }
 }

@@ -9,9 +9,15 @@ using System.Threading.Tasks;
 
 namespace APP.Helpers.FileHandling
 {
+    public interface IContourLoader
+    {
+        Contour LoadContour(string path);
+    }
+
     public class ContourLoader // przyjmuje sting path(sciezke do pliku) ->  zwraca kontur.
         // TxtHandler -> przyjmuje plik, jesli jest txt i go zmienia na kontur
         // BitmapHandler -> przyjmuje plik, jesli jest .jpg  i go zmienia na kontur
+        : IContourLoader
     {
         private ITxtHandler _txtHandler;
         private IBitmapHandler _bitmapHandler;
