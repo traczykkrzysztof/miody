@@ -9,7 +9,7 @@ namespace APP.Model
 {
     public class CounturPoint
     {
-        public int Type { get; set; }  // Typ Pyłku ?
+        public int Type { get; set; }  // Typ Pyłku 
 
         public Point Location { get; set; }
 

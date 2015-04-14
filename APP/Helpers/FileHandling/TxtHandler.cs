@@ -29,11 +29,11 @@ namespace APP.Helpers.FileHandling
                  {
                      string[] line = readLine.Split(' ');
                      CounturPoint point = new CounturPoint()
-                     {
+                     {  // kazda linijka to odpowiednio współrzędna: X, Y     ; Typ pyłku 
                          Location = new Point(int.Parse(line[0]), int.Parse(line[1])),
                          Type = int.Parse(line[2])
                      };
-                     wynikContour.CounturSet.Add(point); //ConturePoint, po co poj. kropce typ pyłku?
+                     wynikContour.CounturSet.Add(point); 
                  }
              }
 
