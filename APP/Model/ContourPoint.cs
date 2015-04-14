@@ -7,13 +7,13 @@ using System.Windows;
 
 namespace APP.Model
 {
-    public class CounturPoint
+    public class ContourPoint
     {
         public int Type { get; set; }  // Typ Pyłku 
 
         public Point Location { get; set; }
 
-        protected bool Equals(CounturPoint other)
+        protected bool Equals(ContourPoint other)
         {
             return Location.Equals(other.Location) && Type == other.Type;
         }
@@ -23,7 +23,7 @@ namespace APP.Model
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((CounturPoint) obj);
+            return Equals((ContourPoint) obj);
         }
 
         public override int GetHashCode()

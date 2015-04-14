@@ -32,12 +32,12 @@ namespace APP.Helpers.FileHandling
             // korzystamy z wbudowanej juz listy enum i moze zostac int jako TYP.
                     int numerEnumeracji = (int) znanyColor;
                     //kolor tego konkretnego pixela
-                 CounturPoint point = new CounturPoint()
+                 ContourPoint point = new ContourPoint()
                      {                        
                          Location = new   System.Windows.Point(i, j),
                          Type = numerEnumeracji                     
                      };
-                    wynikContour.CounturSet.Add(point);
+                    wynikContour.ContourSet.Add(point);
                 }
             }
        

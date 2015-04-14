@@ -28,12 +28,12 @@ namespace APP.Helpers.FileHandling
                  if (readLine != null)
                  {
                      string[] line = readLine.Split(' ');
-                     CounturPoint point = new CounturPoint()
+                     ContourPoint point = new ContourPoint()
                      {  // kazda linijka to odpowiednio współrzędna: X, Y     ; Typ pyłku 
                          Location = new Point(int.Parse(line[0]), int.Parse(line[1])),
                          Type = int.Parse(line[2])
                      };
-                     wynikContour.CounturSet.Add(point); 
+                     wynikContour.ContourSet.Add(point); 
                  }
              }
 

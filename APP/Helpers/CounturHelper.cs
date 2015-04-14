@@ -8,7 +8,7 @@ namespace APP.Helpers
     class CounturHelper
     {
 
-        public IQueryable<CounturPoint> GetPointsInsideContur(Contour kontur)
+        public IQueryable<ContourPoint> GetPointsInsideContur(Contour kontur)
         {
             throw new NotImplementedException();
         }

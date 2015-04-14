@@ -7,10 +7,10 @@ namespace APP.Model
     {
         public Contour()
         {
-            CounturSet=new HashSet<CounturPoint>();
+            ContourSet=new HashSet<ContourPoint>();
         }
 
-        public HashSet<CounturPoint> CounturSet { get; set; }
+        public HashSet<ContourPoint> ContourSet { get; set; }
         public Bitmap Bitmap { get; set; }
     }
 }

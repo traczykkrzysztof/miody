@@ -22,10 +22,10 @@ namespace Tests
             Contour contour =  txtHandler.LoadTxt(reader);
 
             //sprawdzenie (asercje)
-            Assert.Contains(new CounturPoint { Location = new Point(1, 1), Type = 1 }, contour.CounturSet);
-            Assert.Contains(new CounturPoint { Location = new Point(1, 2), Type = 1 }, contour.CounturSet);
-            Assert.Contains(new CounturPoint { Location = new Point(2, 2), Type = 2 }, contour.CounturSet);
-            Assert.True(contour.CounturSet.Count == 3);
+            Assert.Contains(new ContourPoint { Location = new Point(1, 1), Type = 1 }, contour.ContourSet);
+            Assert.Contains(new ContourPoint { Location = new Point(1, 2), Type = 1 }, contour.ContourSet);
+            Assert.Contains(new ContourPoint { Location = new Point(2, 2), Type = 2 }, contour.ContourSet);
+            Assert.True(contour.ContourSet.Count == 3);
 
         }
     }
