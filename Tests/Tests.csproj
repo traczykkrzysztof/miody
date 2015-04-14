@@ -56,8 +56,8 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TxtHandlerTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
