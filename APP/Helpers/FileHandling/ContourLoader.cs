@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace APP.Helpers.FileHandling
 {
-    class ContourLoader // przyjmuje sting path(sciezke do pliku) ->  zwraca kontur.
+    public class ContourLoader // przyjmuje sting path(sciezke do pliku) ->  zwraca kontur.
         // TxtHandler -> przyjmuje plik, jesli jest txt i go zmienia na kontur
         // BitmapHandler -> przyjmuje plik, jesli jest .jpg  i go zmienia na kontur
     {
-        private TxtHandler _txtHandler;
-        private BitmapHandler _bitmapHandler;
+        private ITxtHandler _txtHandler;
+        private IBitmapHandler _bitmapHandler;
 
-        public ContourLoader(BitmapHandler bitmapHandler, TxtHandler txtHandler)
+        public ContourLoader(IBitmapHandler bitmapHandler, ITxtHandler txtHandler)
         {
             _bitmapHandler = bitmapHandler;
             _txtHandler = txtHandler;

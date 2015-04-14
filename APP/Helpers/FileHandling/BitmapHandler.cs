@@ -8,7 +8,12 @@ using APP.Model;
 
 namespace APP.Helpers.FileHandling
 {
-    class BitmapHandler 
+    public interface IBitmapHandler
+    {
+        Contour LoadBitmap(Bitmap path);
+    }
+
+    public class BitmapHandler : IBitmapHandler
     {
         public Contour LoadBitmap(Bitmap path)
         {

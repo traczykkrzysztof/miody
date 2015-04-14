@@ -9,15 +9,20 @@ using System.Windows;
 
 namespace APP.Helpers.FileHandling
 {
-    class TxtHandler
+    public interface ITxtHandler
     {
-        public Contour LoadTxt(StreamReader reader)
+        Contour LoadTxt(TextReader reader);
+    }
+
+    public class TxtHandler : ITxtHandler
+    {
+        public Contour LoadTxt(TextReader reader)
         {
             
             
             Contour wynikContour = new Contour();
 
-             while (!reader.EndOfStream)
+            while (reader.Peek() != -1)
              {
                  string readLine = reader.ReadLine();
                  if (readLine != null)

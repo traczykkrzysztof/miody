@@ -12,5 +12,26 @@ namespace APP.Model
         public int Type { get; set; }  // Typ Pyłku ?
 
         public Point Location { get; set; }
+
+        protected bool Equals(CounturPoint other)
+        {
+            return Location.Equals(other.Location) && Type == other.Type;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((CounturPoint) obj);
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                return (Location.GetHashCode()*397) ^ Type;
+            }
+        }
     }
 }
