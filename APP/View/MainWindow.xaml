@@ -7,9 +7,9 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="110,139,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="110,149,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="110,164,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Button" Name="Button1"  HorizontalAlignment="Left" Margin="110,139,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Załaduj kontur" Name="Button2" HorizontalAlignment="Left" Margin="110,149,0,0" VerticalAlignment="Top" Width="136" Grid.Column="1" Click="Button2_Click"/>
+        <Button Content="Button" Name="Button3" HorizontalAlignment="Left" Margin="110,164,0,0" VerticalAlignment="Top" Width="75"/>
 
     </Grid>
 </Window>

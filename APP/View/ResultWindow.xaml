@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="ResultWindow" Height="300" Width="300">
     <Grid>
-        
+        <Image Name="Image1" HorizontalAlignment="Left" Height="250" Margin="10,10,0,0" VerticalAlignment="Top" Width="272"/>
+
     </Grid>
 </Window>

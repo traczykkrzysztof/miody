@@ -2,6 +2,8 @@
 using System.Drawing;
 using System.Windows;
 using APP.Model;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 
 namespace APP.View
 {
@@ -12,7 +14,22 @@ namespace APP.View
     {
         public ResultWindow(IEnumerable<Result> a , Bitmap bitmap)
         {
+
             InitializeComponent();
+
+            ImageSource obj= System.Windows.Interop.Imaging.CreateBitmapSourceFromHBitmap(
+                      bitmap.GetHbitmap(),
+                      System.IntPtr.Zero,
+                      Int32Rect.Empty,
+                      BitmapSizeOptions.FromEmptyOptions());
+
+            Image1.Source = obj;
+            
+
+           
+
+           
+            
         }
     }
 }
