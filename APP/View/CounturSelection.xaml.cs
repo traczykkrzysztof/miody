@@ -9,9 +9,15 @@ namespace APP.View
     /// </summary>
     public partial class CounturSelection : Window
     {
-        public CounturSelection( Contour a)
+        public CounturSelection( Contour a )
         {
             InitializeComponent();
+        }
+
+        private void Close_Click(object sender, RoutedEventArgs e)
+        {
+            // sprawdzić czy zapisano zmiany
+            this.Close();
         }
 
 

@@ -1,8 +1,24 @@
 ﻿<Window x:Class="APP.View.CounturSelection"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="CounturSelection" Height="300" Width="300">
+        Title="CounturSelection" Height="400" Width="600">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Background="WhiteSmoke">
+            <MenuItem Header="Plik">
+                <MenuItem Header="Wczytaj tło..." />
+                <MenuItem Header="Wczytaj kontury..." />
+                <Separator />
+                <MenuItem Header="Zastosuj algorytm" IsEnabled="False" />
+                <Separator />
+                <MenuItem Header="Zapisz kontury..." />
+                <Separator />
+                <MenuItem Header="Zakończ" Click="Close_Click" />
+            </MenuItem>
+        </Menu>
+        <Image Grid.Row="1" Name="NewContourImage" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0, 60, 0, 0" />
     </Grid>
 </Window>

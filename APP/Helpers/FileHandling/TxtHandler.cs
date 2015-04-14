@@ -17,7 +17,7 @@ namespace APP.Helpers.FileHandling
              StreamReader sr = new StreamReader(fs);
             while (!sr.EndOfStream)
             {
-                wynikContour.CounturSet.Add(); //ConturePoint, po co poj. kropce typ pyłku?
+                //wynikContour.CounturSet.Add(); //ConturePoint, po co poj. kropce typ pyłku?
             }
            
             
