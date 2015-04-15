@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using APP.Helpers.FileHandling;
 
 namespace APP
 {
@@ -20,8 +21,10 @@ namespace APP
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private ContourLoader _contourLoader;
+        public MainWindow(ContourLoader contourLoader)
         {
+            _contourLoader = contourLoader;
             InitializeComponent();
         }
     }

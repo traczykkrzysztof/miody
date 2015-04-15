@@ -27,6 +27,8 @@ namespace Tests
             Assert.Contains(new ContourPoint { Location = new Point(2, 2), Type = 2 }, contour.ContourSet);
             Assert.True(contour.ContourSet.Count == 3);
 
+           
+
         }
     }
 }

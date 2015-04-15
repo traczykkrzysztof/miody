@@ -27,13 +27,13 @@ namespace APP
 
         private void ConfigureContainer()
         {
-            this._container = new StandardKernel();
+            _container = new StandardKernel();
 
             //Helpers
                 //File FileHandling
                     _container.Bind<IBitmapHandler>().To<BitmapHandler>();
                     _container.Bind<ITxtHandler>().To<TxtHandler>();
-                    _container.Bind<IContourLoader>().To<ContourLoader>();
+                    _container.Bind<IContourLoader>().To<ContourLoader>().InSingletonScope();
 
         }
 
