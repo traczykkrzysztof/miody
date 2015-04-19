@@ -1,5 +1,8 @@
-﻿using System;
+﻿using APP.Model;
+using APP.View;
+using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +29,16 @@ namespace APP
         {
             _contourLoader = contourLoader;
             InitializeComponent();
+        }
+
+        private void ContourSelectionOpen_Click(object sender, RoutedEventArgs e)
+        {
+            new CounturSelection(new Contour()).Show();
+        }
+
+        private void ResultOpen_Click(object sender, RoutedEventArgs e)
+        {            
+            new ResultWindow(null, null).Show();
         }
     }
 }

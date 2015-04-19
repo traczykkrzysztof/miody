@@ -17,16 +17,16 @@ namespace APP.Helpers.FileHandling
     public class TxtHandler : ITxtHandler
     {
         public Contour LoadTxt(TextReader reader)
-        {
+    {
             
             
             Contour wynikContour = new Contour();
 
             while (reader.Peek() != -1)
-             {
+        {
                  string readLine = reader.ReadLine();
                  if (readLine != null)
-                 {
+            {
                      string[] line = readLine.Split(' ');
                      ContourPoint point = new ContourPoint()
                      {  // kazda linijka to odpowiednio współrzędna: X, Y     ; Typ pyłku 
@@ -35,9 +35,9 @@ namespace APP.Helpers.FileHandling
                      };
                      wynikContour.ContourSet.Add(point); 
                  }
-             }
-
-
+            }
+           
+            
             return wynikContour;
         }
     }
