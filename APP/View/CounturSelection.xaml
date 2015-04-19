@@ -7,18 +7,262 @@
             <RowDefinition Height="20" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
+        <Canvas x:Name="myCanvas" HorizontalAlignment="Left" Height="297" VerticalAlignment="Top" Width="421"  MouseMove="NewContourImage_MouseMove" MouseDown="NewContourImage_MouseDown" MouseUp="NewContourImage_MouseUp" Grid.Row="1" Margin="10,17,0,0">
+
+            <Canvas.Background>
+                <ImageBrush x:Name="CanvasImage"></ImageBrush>
+            </Canvas.Background>
+
+        </Canvas>
+        <ListBox x:Name="ListaKolorów" HorizontalAlignment="Right" Height="306" Margin="0,17,0,0" Grid.Row="1" VerticalAlignment="Top" Width="136" Grid.RowSpan="2">
+            <ListBoxItem Content="Wielokwiatowy">
+                <ListBoxItem.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <LinearGradientBrush.RelativeTransform>
+                            <TransformGroup>
+                                <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
+                            </TransformGroup>
+                        </LinearGradientBrush.RelativeTransform>
+                        <GradientStop Color="Blue"/>
+                        <GradientStop Color="White" Offset="0.5"/>
+                    </LinearGradientBrush>
+                </ListBoxItem.Background>
+            </ListBoxItem>
+            <ListBoxItem Content="Rzepakowy">
+                <ListBoxItem.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <LinearGradientBrush.RelativeTransform>
+                            <TransformGroup>
+                                <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
+                            </TransformGroup>
+                        </LinearGradientBrush.RelativeTransform>
+                        <GradientStop Color="Crimson"/>
+                        <GradientStop Color="White" Offset="0.5"/>
+                    </LinearGradientBrush>
+                </ListBoxItem.Background>
+            </ListBoxItem>
+            <ListBoxItem Content="Spadziowy">
+                <ListBoxItem.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <LinearGradientBrush.RelativeTransform>
+                            <TransformGroup>
+                                <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
+                            </TransformGroup>
+                        </LinearGradientBrush.RelativeTransform>
+                        <GradientStop Color="Cyan"/>
+                        <GradientStop Color="White" Offset="0.5"/>
+                    </LinearGradientBrush>
+                </ListBoxItem.Background>
+            </ListBoxItem>
+            <ListBoxItem Content="Lipowy">
+                <ListBoxItem.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <LinearGradientBrush.RelativeTransform>
+                            <TransformGroup>
+                                <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
+                            </TransformGroup>
+                        </LinearGradientBrush.RelativeTransform>
+                        <GradientStop Color="DeepPink"/>
+                        <GradientStop Color="White" Offset="0.5"/>
+                    </LinearGradientBrush>
+                </ListBoxItem.Background>
+            </ListBoxItem>
+            <ListBoxItem Content="Akacjowy">
+                <ListBoxItem.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <LinearGradientBrush.RelativeTransform>
+                            <TransformGroup>
+                                <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
+                            </TransformGroup>
+                        </LinearGradientBrush.RelativeTransform>
+                        <GradientStop Color="Gold"/>
+                        <GradientStop Color="White" Offset="0.5"/>
+                    </LinearGradientBrush>
+                </ListBoxItem.Background>
+            </ListBoxItem>
+            <ListBoxItem Content="Mniszkowy">
+                <ListBoxItem.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <LinearGradientBrush.RelativeTransform>
+                            <TransformGroup>
+                                <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
+                            </TransformGroup>
+                        </LinearGradientBrush.RelativeTransform>
+                        <GradientStop Color="Gray"/>
+                        <GradientStop Color="White" Offset="0.5"/>
+                    </LinearGradientBrush>
+                </ListBoxItem.Background>
+            </ListBoxItem>
+            <ListBoxItem Content="Wrzosowy">
+                <ListBoxItem.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <LinearGradientBrush.RelativeTransform>
+                            <TransformGroup>
+                                <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
+                            </TransformGroup>
+                        </LinearGradientBrush.RelativeTransform>
+                        <GradientStop Color="Indigo"/>
+                        <GradientStop Color="White" Offset="0.5"/>
+                    </LinearGradientBrush>
+                </ListBoxItem.Background>
+            </ListBoxItem>
+            <ListBoxItem Content="Gryczany">
+                <ListBoxItem.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <LinearGradientBrush.RelativeTransform>
+                            <TransformGroup>
+                                <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
+                            </TransformGroup>
+                        </LinearGradientBrush.RelativeTransform>
+                        <GradientStop Color="Green"/>
+                        <GradientStop Color="White" Offset="0.5"/>
+                    </LinearGradientBrush>
+                </ListBoxItem.Background>
+            </ListBoxItem>
+            <ListBoxItem Content="Faceliowy">
+                <ListBoxItem.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <LinearGradientBrush.RelativeTransform>
+                            <TransformGroup>
+                                <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
+                            </TransformGroup>
+                        </LinearGradientBrush.RelativeTransform>
+                        <GradientStop Color="Coral"/>
+                        <GradientStop Color="White" Offset="0.5"/>
+                    </LinearGradientBrush>
+                </ListBoxItem.Background>
+            </ListBoxItem>
+            <ListBoxItem Content="Malinowy">
+                <ListBoxItem.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <LinearGradientBrush.RelativeTransform>
+                            <TransformGroup>
+                                <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
+                            </TransformGroup>
+                        </LinearGradientBrush.RelativeTransform>
+                        <GradientStop Color="Magenta"/>
+                        <GradientStop Color="White" Offset="0.5"/>
+                    </LinearGradientBrush>
+                </ListBoxItem.Background>
+            </ListBoxItem>
+            <ListBoxItem Content="Nostrzykowy">
+                <ListBoxItem.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <LinearGradientBrush.RelativeTransform>
+                            <TransformGroup>
+                                <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
+                            </TransformGroup>
+                        </LinearGradientBrush.RelativeTransform>
+                        <GradientStop Color="Lime"/>
+                        <GradientStop Color="White" Offset="0.5"/>
+                    </LinearGradientBrush>
+                </ListBoxItem.Background>
+            </ListBoxItem>
+            <ListBoxItem Content="Nawłociowy">
+                <ListBoxItem.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <LinearGradientBrush.RelativeTransform>
+                            <TransformGroup>
+                                <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
+                            </TransformGroup>
+                        </LinearGradientBrush.RelativeTransform>
+                        <GradientStop Color="Navy"/>
+                        <GradientStop Color="White" Offset="0.5"/>
+                    </LinearGradientBrush>
+                </ListBoxItem.Background>
+            </ListBoxItem>
+            <ListBoxItem Content="Koniczynowy">
+                <ListBoxItem.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <LinearGradientBrush.RelativeTransform>
+                            <TransformGroup>
+                                <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
+                            </TransformGroup>
+                        </LinearGradientBrush.RelativeTransform>
+                        <GradientStop Color="Orange"/>
+                        <GradientStop Color="White" Offset="0.5"/>
+                    </LinearGradientBrush>
+                </ListBoxItem.Background>
+            </ListBoxItem>
+            <ListBoxItem Content="Leśny">
+                <ListBoxItem.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <LinearGradientBrush.RelativeTransform>
+                            <TransformGroup>
+                                <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
+                            </TransformGroup>
+                        </LinearGradientBrush.RelativeTransform>
+                        <GradientStop Color="SeaGreen"/>
+                        <GradientStop Color="White" Offset="0.5"/>
+                    </LinearGradientBrush>
+                </ListBoxItem.Background>
+            </ListBoxItem>
+            <ListBoxItem Content="Bławatkowy">
+                <ListBoxItem.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <LinearGradientBrush.RelativeTransform>
+                            <TransformGroup>
+                                <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
+                            </TransformGroup>
+                        </LinearGradientBrush.RelativeTransform>
+                        <GradientStop Color="Teal"/>
+                        <GradientStop Color="White" Offset="0.5"/>
+                    </LinearGradientBrush>
+                </ListBoxItem.Background>
+            </ListBoxItem>
+            <ListBoxItem Content="Cząbrowy">
+                <ListBoxItem.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <LinearGradientBrush.RelativeTransform>
+                            <TransformGroup>
+                                <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
+                            </TransformGroup>
+                        </LinearGradientBrush.RelativeTransform>
+                        <GradientStop Color="Maroon"/>
+                        <GradientStop Color="White" Offset="0.5"/>
+                    </LinearGradientBrush>
+                </ListBoxItem.Background>
+            </ListBoxItem>
+            <ListBoxItem Content="Manuka">
+                <ListBoxItem.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <LinearGradientBrush.RelativeTransform>
+                            <TransformGroup>
+                                <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
+                            </TransformGroup>
+                        </LinearGradientBrush.RelativeTransform>
+                        <GradientStop Color="SkyBlue"/>
+                        <GradientStop Color="White" Offset="0.5"/>
+                    </LinearGradientBrush>
+                </ListBoxItem.Background>
+            </ListBoxItem>
+            <ListBoxItem Content="Sadowniczy">
+                <ListBoxItem.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <LinearGradientBrush.RelativeTransform>
+                            <TransformGroup>
+                                <RotateTransform Angle="90" CenterY="0.5" CenterX="0.5"/>
+                            </TransformGroup>
+                        </LinearGradientBrush.RelativeTransform>
+                        <GradientStop Color="Olive"/>
+                        <GradientStop Color="White" Offset="0.5"/>
+                    </LinearGradientBrush>
+                </ListBoxItem.Background>
+            </ListBoxItem>
+        </ListBox>
         <Menu Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Background="WhiteSmoke">
             <MenuItem Header="Plik">
-                <MenuItem Header="Wczytaj tło..." />
-                <MenuItem Header="Wczytaj kontury..." />
+                <MenuItem Header="Wczytaj tło..." Click="LoadBackground_Click"/>
+                <MenuItem Header="Wczytaj kontury..."/>
                 <Separator />
                 <MenuItem Header="Zastosuj algorytm" IsEnabled="False" />
                 <Separator />
-                <MenuItem Header="Zapisz kontury..." />
+                <MenuItem Header="Zapisz kontury..." Click="SaveContours_Click" />
                 <Separator />
                 <MenuItem Header="Zakończ" Click="Close_Click" />
             </MenuItem>
         </Menu>
-        <Image Grid.Row="1" Name="NewContourImage" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0, 60, 0, 0" />
+        <Button Content="Tabela kolorów..." HorizontalAlignment="Right" Margin="0,10,10,0" VerticalAlignment="Top" Width="113" Grid.RowSpan="2" Click="TabelaKolorowShow_Click"/>
+
     </Grid>
 </Window>
