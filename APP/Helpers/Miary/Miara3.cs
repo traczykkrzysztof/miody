@@ -8,6 +8,7 @@ namespace APP.Helpers.Miary
 {
     class Miara3
     {
+        //todo oganrąć ten burdel tutaj
         static double miara3(int[,] tab1, int[,] tab2)
         {
             int licznik = 0;

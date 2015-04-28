@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace APP.Helpers.Miary
 {
-    class Miara1 //oraz 3.
+    class Miara1 
     {
-        
+        //todo oganrąć ten burdel tutaj
+
             static double miara1(int[,] tab1, int[,] tab2)
             {
                 int iloczyn = 0;
@@ -36,31 +37,7 @@ namespace APP.Helpers.Miary
                 //suma = suma - iloczyn;
                 return Result;
             }
-            static double miara3(int[,] tab1, int[,] tab2)
-            {
-                int licznik = 0;
-                double Result = licznik / tab1.Length;
-                for (int i = 0; i < tab1.GetLength(0); i++)
-                {
-                    for (int j = 0; j < tab1.GetLength(1); j++)
-                    {
-                        if (tab1[i, j] != tab2[i, j])
-                        {
-                            licznik++;
-                        }
-                    }
-                }
-                return Result;
-            }
 
-
-           
-                //int a = 6;
-                //int b = 6;
-                //int[,] tab1 = new int[a, b];
-                //int[,] tab2 = new int[a, b];
-                //miara1(tab1, tab2);
-                //miara3(tab1, tab2);
 
 
 
@@ -71,4 +48,5 @@ namespace APP.Helpers.Miary
             
         }
     }
-}
+
+
