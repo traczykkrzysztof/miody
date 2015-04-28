@@ -63,6 +63,8 @@
     <Compile Include="Helpers\FileHandling\BitmapHandler.cs" />
     <Compile Include="Helpers\FileHandling\BitmapSaver.cs" />
     <Compile Include="Helpers\FileHandling\TxtSaver.cs" />
+    <Compile Include="Helpers\Miary\Miara1.cs" />
+    <Compile Include="Helpers\Miary\Miara3.cs" />
     <Compile Include="View\ResultWindow.xaml.cs">
       <DependentUpon>ResultWindow.xaml</DependentUpon>
     </Compile>
