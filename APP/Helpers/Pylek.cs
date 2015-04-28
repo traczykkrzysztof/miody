@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace APP.Helpers.FileHandling
+namespace APP.Helpers
 {
     public sealed class Pylek //nie mozna po  niej dziedziczyc
     {
