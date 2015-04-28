@@ -1,11 +1,12 @@
 ﻿using APP.Model;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
+using Point = System.Windows.Point;
 
 namespace APP.Helpers.FileHandling
 {
@@ -17,9 +18,14 @@ namespace APP.Helpers.FileHandling
     public class TxtHandler : ITxtHandler
     {
         public Contour LoadTxt(TextReader reader)
-    {
-            
-            
+        {
+            //Pylek numero = 1;
+            //Pylek kolorp = KnownColor.ActiveCaption;
+            //Pylek nazwo = "rzepakowy";
+            //string name;
+       
+
+           
             Contour wynikContour = new Contour();
 
             while (reader.Peek() != -1)
