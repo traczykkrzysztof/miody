@@ -19,7 +19,6 @@ namespace APP.Helpers.FileHandling
         public Contour LoadTxt(TextReader reader)
     {
             
-            
             Contour wynikContour = new Contour();
 
             while (reader.Peek() != -1)
@@ -29,9 +28,10 @@ namespace APP.Helpers.FileHandling
             {
                      string[] line = readLine.Split(' ');
                      ContourPoint point = new ContourPoint()
-                     {  // kazda linijka to odpowiednio współrzędna: X, Y     ; Typ pyłku 
+                     {  // kazda linijka to odpowiednio współrzędna: X Y Typ pyłku ;rozna ilosc spacji
                          Location = new Point(int.Parse(line[0]), int.Parse(line[1])),
-                         Type = int.Parse(line[2])
+                         Type =  (Pylek) line[2]     
+ 
                      };
                      wynikContour.ContourSet.Add(point); 
                  }
