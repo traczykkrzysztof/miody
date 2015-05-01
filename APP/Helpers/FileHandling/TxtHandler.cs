@@ -16,6 +16,16 @@ namespace APP.Helpers.FileHandling
 
     public class TxtHandler : ITxtHandler
     {
+        /// <summary>
+        /// Metoda odczytuje z pliku txt dane linijka po linijce
+        /// dodając do wynikowego konturu  ContourPoint 
+        /// </summary>
+        /// <param name="reader">
+        /// TextReader od naszego pliku tekstowego
+        /// </param>
+        /// <returns>
+        /// Zwraca kontur
+        /// </returns>
         public Contour LoadTxt(TextReader reader)
     {
             

@@ -17,14 +17,22 @@ namespace APP.Helpers.FileHandling
 
     public class BitmapHandler : IBitmapHandler
     {
-        public Contour LoadBitmap(Bitmap bitmap)//dostaje bitmape
+        /// <summary>
+        /// Metoda odczytuje z bitmapy dane, tworząc kontur
+        /// </summary>
+        /// <param name="bitmap">
+        /// Instancja bitmapy, na jednej bitmapie mamy wiele konturow, ktore roznia sie kolorem
+        /// </param>
+        /// <returns>
+        /// Zwraca Kontur
+        /// </returns>
+        public Contour LoadBitmap(Bitmap bitmap)
         {
-            //na jednej bitmapie mamy wiele konturow, ktore roznia sie kolorem
             Contour wynikContour = new Contour();
             wynikContour.Bitmap = bitmap;
-            for (int i = 0; i < bitmap.Height; i++) //po ilosci pikseli w wysokosci
+            for (int i = 0; i < bitmap.Height; i++) 
             {
-                for (int j = 0; j < bitmap.Width; j++) //po ilosci pikseli w szerokosci
+                for (int j = 0; j < bitmap.Width; j++) 
                 {
                     Color pixelcolor = bitmap.GetPixel(i, j);
 
@@ -33,7 +41,6 @@ namespace APP.Helpers.FileHandling
 
                     //https://msdn.microsoft.com/en-us/library/system.drawing.knowncolor(v=vs.110).aspx
                     // korzystamy z wbudowanej juz listy enum i moze zostac int jako TYP.
-                    //int numerEnumeracji = (int) znanyColor;
                     //kolor tego konkretnego pixela
                     ContourPoint point = new ContourPoint()
                         {

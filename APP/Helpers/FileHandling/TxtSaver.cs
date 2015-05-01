@@ -10,6 +10,15 @@ namespace APP.Helpers.FileHandling
 {
     class TxtSaver
     {
+        /// <summary>
+        /// Metoda zapisuje kontur do pliku tekstowego
+        /// </summary>
+        /// <param name="kontur">
+        /// Kontur, który chcemy zapisać do pliku tekstowego
+        /// </param>
+        /// <param name="writer">
+        /// TextWriter umożliwiający zapis do pliku
+        /// </param>
         public TxtSaver(Contour kontur, TextWriter writer)
         {
             string linia;

@@ -3,6 +3,9 @@ using System.Drawing;
 
 namespace APP.Helpers
 {
+    /// <summary>
+    /// Klasa zamknięta, pełniąca rolę własnego enuma.
+    /// </summary>
     public sealed class Pylek //nie mozna po  niej dziedziczyc
     {
         public static readonly Pylek Rzepakowy = new Pylek(1, "Rzepakowy", KnownColor.Pink);
@@ -50,7 +53,7 @@ namespace APP.Helpers
         private readonly string name;
         private readonly KnownColor color;
 
-
+   
         private Pylek(int numer, string name, KnownColor color)
         {
             this.numer = numer;
@@ -61,34 +64,70 @@ namespace APP.Helpers
             NumberList.Add(numer, this);
         }
 
-
+        /// <summary>
+        /// Metoda pozwala na zamianę z instancji KnownColor na instancję Pyłek
+        /// </summary>
+        /// <param name="color">
+        /// Instancja typu KnownColor
+        /// </param>
+        /// <returns></returns>
         public static implicit operator Pylek(KnownColor color) //zamieniamy  color->pylek
         {
             return KolorPylkowList[color];
         }
 
-
+        /// <summary>
+        /// Metoda pozwala na zamianę z instancji Pylek na instancję Pyłek
+        /// </summary>
+        /// <param name="pylek">
+        /// Instancja typu Pylek
+        /// </param>
+        /// <returns></returns>
         public static implicit operator KnownColor(Pylek pylek) //zamieniamy pylek->color
         {
             return pylek.color;
         }
 
-
+        /// <summary>
+        /// Metoda pozwala na zamianę z instancji int na instancję Pyłek
+        /// </summary>
+        /// <param name="numer">
+        /// Instancja typu int
+        /// </param>
+        /// <returns></returns>
         public static implicit operator Pylek(int numer) //zamieniamy  int->pylek
         {
             return NumberList[numer];
         }
-
+        /// <summary>
+        /// Metoda pozwala na zamianę z instancji Pylek na instancję int
+        /// </summary>
+        /// <param name="pylek">
+        /// Instancja typu Pylek
+        /// </param>
+        /// <returns></returns>
         public static implicit operator int(Pylek pylek) //zamieniamy  pylek->int
         {
             return pylek.numer;
         }
-
+        /// <summary>
+        /// Metoda pozwala na zamianę z instancji string na instancję Pyłek
+        /// </summary>
+        /// <param name="name">
+        /// Instancja typu string
+        /// </param>
+        /// <returns></returns>
         public static implicit operator Pylek(string name) //zamieniamy  string_name->pylek
         {
             return NazwyPylkowList[name];
         }
-
+        /// <summary>
+        /// Metoda pozwala na zamianę z instancji pylek na instancję string
+        /// </summary>
+        /// <param name="pylek">
+        /// Instancja typu Pylek
+        /// </param>
+        /// <returns></returns>
         public static implicit operator string(Pylek pylek) //zamieniamy  pylek->string_name
         {
             return pylek.name;
