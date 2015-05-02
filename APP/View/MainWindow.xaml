@@ -8,16 +8,17 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <Menu Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  Background="WhiteSmoke">
-            <MenuItem Header="Plik">
-                <MenuItem Header="Stwórz kontur" Click="ContourSelectionOpen_Click" />
-                <Separator />
-                <MenuItem Header="Wyjście" />
-            </MenuItem>
-        </Menu>
-        <Button Grid.Row="0" Content="Porównaj kontury" VerticalAlignment="Top" Width="180" Height="30" HorizontalAlignment="Right" Margin="0,10,10,0" Grid.RowSpan="2" Click="ResultOpen_Click"/>
+            <Menu.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+                </ItemsPanelTemplate>
+            </Menu.ItemsPanel>
+            <MenuItem Header="Stwórz kontur" Click="ContourSelectionOpen_Click" Margin="10,0,0,0" />
+            <MenuItem Header="Porównaj kontury" Click="ResultOpen_Click" HorizontalAlignment="Right" Margin="0,0,10,0"/>
+        </Menu>        
 
         <TabControl Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto">
-            <TabItem Header="kontur 1">
+            <TabItem Header="Kontur 1">
                 <Grid>
                     <Menu HorizontalAlignment="Stretch" VerticalAlignment="Top"  Background="WhiteSmoke">
                         <MenuItem Header="Wczytaj" />
@@ -26,7 +27,7 @@
                     <Image Name="Contour1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0, 60, 0, 0" />
                 </Grid>
             </TabItem>
-            <TabItem Header="kontur 2">
+            <TabItem Header="Kontur 2">
                 <Grid Background="#FFE5E5E5">
                     <Menu HorizontalAlignment="Stretch" VerticalAlignment="Top"  Background="WhiteSmoke">
                         <MenuItem Header="Wczytaj" />
