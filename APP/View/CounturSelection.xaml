@@ -1,7 +1,7 @@
 ﻿<Window x:Class="APP.View.CounturSelection"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="CounturSelection" Width="785" Height="490">
+        Title="CounturSelection" Width="800" Height="600">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />
@@ -29,39 +29,42 @@
             <MenuItem Header="Tabela kolorów" HorizontalAlignment="Right" Click="TabelaKolorowShow_Click" Margin="0,0,10,0"/>
         </Menu>
         
-        <ScrollViewer Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="600" Height="400" Margin="10,10,0,0" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
-            <Canvas x:Name="CanvasContour" MouseMove="CanvasContour_MouseMove" MouseDown="CanvasContour_MouseDown" MouseUp="CanvasContour_MouseUp" MouseLeave="CanvasContour_MouseLeave" MouseEnter="CanvasContour_MouseEnter">
-                <Canvas.Background>
-                    <ImageBrush x:Name="CanvasContourBackground"></ImageBrush>
-                </Canvas.Background>            
-            </Canvas>
-        </ScrollViewer>
+        <DockPanel Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <ListView DockPanel.Dock="Right" Name="ListColors" HorizontalAlignment="Right" VerticalAlignment="Stretch" Width="150" PreviewMouseLeftButtonUp="ListViewTypes_PreviewMouseLeftButtonUp_1" SelectionMode="Single" >
+                <ListView.Resources>
+                    <Style TargetType="GridViewColumnHeader">
+                        <Setter Property="Visibility" Value="Collapsed" />
+                    </Style>
+                </ListView.Resources>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Name}" />
+                        <GridViewColumn Header="Kolor" Width="50">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Rectangle Height="10" Width="60">
+                                        <Rectangle.Fill>
+                                            <LinearGradientBrush StartPoint="0.3,0" EndPoint="1,0">
+                                                <GradientStop Color="White" Offset="0" />
+                                                <GradientStop Color="{Binding Color.Color}" Offset="1" />
+                                            </LinearGradientBrush>
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
 
-        <ListView Grid.Row="1" Name="ListColors" HorizontalAlignment="Right" VerticalAlignment="Stretch" Width="150" PreviewMouseLeftButtonUp="ListViewTypes_PreviewMouseLeftButtonUp_1" SelectionMode="Single" >
-            <ListView.Resources>
-                <Style TargetType="GridViewColumnHeader">
-                    <Setter Property="Visibility" Value="Collapsed" />
-                </Style>
-            </ListView.Resources>
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Name}" />
-                    <GridViewColumn Header="Kolor" Width="50">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <Rectangle Height="10" Width="60">
-                                    <Rectangle.Fill>
-                                        <LinearGradientBrush StartPoint="0.3,0" EndPoint="1,0">
-                                            <GradientStop Color="White" Offset="0" />
-                                            <GradientStop Color="{Binding Color.Color}" Offset="1" />
-                                        </LinearGradientBrush>
-                                    </Rectangle.Fill>
-                                </Rectangle>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>                
+            <ScrollViewer Margin="10,10,10,10" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+                <Canvas x:Name="CanvasContour" MouseMove="CanvasContour_MouseMove" MouseDown="CanvasContour_MouseDown" MouseUp="CanvasContour_MouseUp" MouseLeave="CanvasContour_MouseLeave" MouseEnter="CanvasContour_MouseEnter">
+                    <Canvas.Background>
+                        <ImageBrush x:Name="CanvasContourBackground"></ImageBrush>
+                    </Canvas.Background>
+                </Canvas>
+            </ScrollViewer>
+        </DockPanel>
+    
     </Grid>
 </Window>

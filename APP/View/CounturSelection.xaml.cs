@@ -21,10 +21,14 @@ namespace APP.View
     {
         private Brush brushColor;
         private Point? currentPoint = null;
+        private List<int> przedzial;
 
         public CounturSelection( Contour a )
         {
-            InitializeComponent();            
+            InitializeComponent();
+
+            przedzial = new List<int>();
+            przedzial.Add(0); //todo: sprawdzic
             
             // POTRZEBNA ZMIANA z klasy Pylek
             ListColors.ItemsSource = Pylki.getTypes();
@@ -91,10 +95,13 @@ namespace APP.View
 
         private void TabelaKolorowShow_Click(object sender, RoutedEventArgs e)
         {
-            if (ListColors.Visibility == Visibility.Hidden)
+            //todo: if (przedzial.Count > 2) ?
+            //CanvasContour.Children.RemoveRange(przedzial[przedzial.Count - 2], przedzial[przedzial.Count - 1] - przedzial[przedzial.Count - 2]);
+            //przedzial.RemoveRange(przedzial.Count - 1, 1);            
+            if (ListColors.Visibility == Visibility.Collapsed)
                 ListColors.Visibility = Visibility.Visible;
             else
-                ListColors.Visibility = Visibility.Hidden;
+                ListColors.Visibility = Visibility.Collapsed;            
         }        
 
         private void CanvasContour_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
@@ -120,8 +127,7 @@ namespace APP.View
                     line.SetValue(RenderOptions.EdgeModeProperty, EdgeMode.Aliased);
 
                     currentPoint = e.GetPosition(CanvasContour);
-
-                    CanvasContour.Visibility = Visibility.Visible;
+                    
                     CanvasContour.Children.Add(line);
                 }
             }
@@ -137,6 +143,7 @@ namespace APP.View
         private void CanvasContour_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             currentPoint = null;
+            przedzial.Add(CanvasContour.Children.Count);
         }
 
         private void CanvasContour_MouseLeave(object sender, MouseEventArgs e)
@@ -210,8 +217,8 @@ namespace APP.View
         private void ListViewTypes_PreviewMouseLeftButtonUp_1(object sender, MouseButtonEventArgs e)
         {
             var item = (sender as ListView).SelectedItem;
-            Console.WriteLine(item);
-            brushColor = (item as Pylki).Color;
+            if (item != null)
+                brushColor = (item as Pylki).Color;
         }
 
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
