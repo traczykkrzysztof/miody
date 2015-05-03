@@ -2,6 +2,17 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="CounturSelection" Width="800" Height="600">
+
+    <Window.CommandBindings>
+        <CommandBinding Command="Undo" Executed="Undo_Executed" />
+        <CommandBinding Command="Save" Executed="SaveContours_Click" />
+    </Window.CommandBindings>
+
+    <Window.InputBindings>
+        <KeyBinding Command="Undo" Key="Z" Modifiers="Control" />
+        <KeyBinding Command="Save" Key="S" Modifiers="Control" />
+    </Window.InputBindings>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />
@@ -20,12 +31,16 @@
                 <Separator />
                 <MenuItem Header="Zastosuj algorytm" IsEnabled="False" />
                 <Separator />
-                <MenuItem Header="Zapisz kontury..." Click="SaveContours_Click" />
+                <MenuItem Header="Zapisz kontury..." InputGestureText="Ctrl+S" Click="SaveContours_Click" />
                 <MenuItem Header="Zapisz i wczytaj do pola 'Kontur 1'" Click="SaveContourAndLoad1_Click" />
                 <MenuItem Header="Zapisz i wczytaj do pola 'Kontur 2'" Click="SaveContourAndLoad2_Click" />
                 <Separator />
                 <MenuItem Header="Zakończ" Click="Close_Click" />
-            </MenuItem>            
+            </MenuItem>
+            <MenuItem Header="Edycja">
+                <MenuItem Header="Cofnij" InputGestureText="Ctrl+Z" Command="Undo"  />
+                <MenuItem Header="Wyczyść" Click="MenuItem_Click" />
+            </MenuItem>
             <MenuItem Header="Tabela kolorów" HorizontalAlignment="Right" Click="TabelaKolorowShow_Click" Margin="0,0,10,0"/>
         </Menu>
         
@@ -36,9 +51,9 @@
                         <Setter Property="Visibility" Value="Collapsed" />
                     </Style>
                 </ListView.Resources>
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding Name}" />
+                <ListView.View>                    
+                    <GridView>                        
+                        <GridViewColumn Header="Nazwa" DisplayMemberBinding="{Binding name}" />                        
                         <GridViewColumn Header="Kolor" Width="50">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
@@ -46,7 +61,7 @@
                                         <Rectangle.Fill>
                                             <LinearGradientBrush StartPoint="0.3,0" EndPoint="1,0">
                                                 <GradientStop Color="White" Offset="0" />
-                                                <GradientStop Color="{Binding Color.Color}" Offset="1" />
+                                                <GradientStop Color="{Binding color}" Offset="1" />
                                             </LinearGradientBrush>
                                         </Rectangle.Fill>
                                     </Rectangle>
@@ -57,12 +72,15 @@
                 </ListView.View>
             </ListView>
 
-            <ScrollViewer Margin="10,10,10,10" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
-                <Canvas x:Name="CanvasContour" MouseMove="CanvasContour_MouseMove" MouseDown="CanvasContour_MouseDown" MouseUp="CanvasContour_MouseUp" MouseLeave="CanvasContour_MouseLeave" MouseEnter="CanvasContour_MouseEnter">
+            <ScrollViewer Name="Scrolls" Margin="10,10,10,10" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">                
+                <Canvas  x:Name="CanvasContour" MouseMove="CanvasContour_MouseMove" MouseDown="CanvasContour_MouseDown" MouseUp="CanvasContour_MouseUp" MouseLeave="CanvasContour_MouseLeave" MouseEnter="CanvasContour_MouseEnter">                                        
+                    <Canvas.LayoutTransform>
+                        <ScaleTransform x:Name="CanvasContourScale" />
+                    </Canvas.LayoutTransform>
                     <Canvas.Background>
                         <ImageBrush x:Name="CanvasContourBackground"></ImageBrush>
                     </Canvas.Background>
-                </Canvas>
+                </Canvas>                
             </ScrollViewer>
         </DockPanel>
     

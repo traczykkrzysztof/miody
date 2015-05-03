@@ -1,74 +1,77 @@
 ﻿using System.Collections.Generic;
-using System.Drawing;
+using System.Windows.Media;
 
 namespace APP.Helpers
 {
     public sealed class Pylek //nie mozna po  niej dziedziczyc
     {
-        public static readonly Pylek Rzepakowy = new Pylek(1, "Rzepakowy", KnownColor.Pink);
+        
+        public static void init()
+        {
+            Pylek Rzepakowy = new Pylek(1, "Rzepakowy", Colors.Pink);
 
-        public static readonly Pylek Spadziowy = new Pylek(2, "Spadziowy", KnownColor.Cyan);
+            Pylek Spadziowy = new Pylek(2, "Spadziowy", Colors.Cyan);
 
-        public static readonly Pylek Lipowy = new Pylek(3, "Lipowy", KnownColor.DeepPink);
+            Pylek Lipowy = new Pylek(3, "Lipowy", Colors.DeepPink);
 
-        public static readonly Pylek Akacjowy = new Pylek(4, "Akacjowy", KnownColor.Gold);
+            Pylek Akacjowy = new Pylek(4, "Akacjowy", Colors.Gold);
 
-        public static readonly Pylek Mniszkowy = new Pylek(5, "Mniszkowy", KnownColor.Gray);
+            Pylek Mniszkowy = new Pylek(5, "Mniszkowy", Colors.Gray);
 
-        public static readonly Pylek Wrzosowy = new Pylek(6, "Wrzosowy", KnownColor.Indigo);
+            Pylek Wrzosowy = new Pylek(6, "Wrzosowy", Colors.Indigo);
 
-        public static readonly Pylek Gryczany = new Pylek(7, "Gryczany", KnownColor.Green);
+            Pylek Gryczany = new Pylek(7, "Gryczany", Colors.Green);
 
-        public static readonly Pylek Faceliowy = new Pylek(8, "Faceliowy", KnownColor.Coral);
+            Pylek Faceliowy = new Pylek(8, "Faceliowy", Colors.Coral);
 
-        public static readonly Pylek Malinowy = new Pylek(9, "Malinowy", KnownColor.Magenta);
+            Pylek Malinowy = new Pylek(9, "Malinowy", Colors.Magenta);
 
-        public static readonly Pylek Nostrzykowy = new Pylek(10, "Nostrzykowy", KnownColor.Lime);
+            Pylek Nostrzykowy = new Pylek(10, "Nostrzykowy", Colors.Lime);
 
-        public static readonly Pylek Nawłociowy = new Pylek(11, "Nawłociowy", KnownColor.Navy);
+            Pylek Nawłociowy = new Pylek(11, "Nawłociowy", Colors.Navy);
 
-        public static readonly Pylek Koniczynowy = new Pylek(12, "Koniczynowy", KnownColor.Orange);
+            Pylek Koniczynowy = new Pylek(12, "Koniczynowy", Colors.Orange);
 
-        public static readonly Pylek Leśny = new Pylek(13, "Leśny", KnownColor.SeaGreen);
+            Pylek Leśny = new Pylek(13, "Leśny", Colors.SeaGreen);
 
-        public static readonly Pylek Bławatkowy = new Pylek(14, "Bławatkowy", KnownColor.Teal);
+            Pylek Bławatkowy = new Pylek(14, "Bławatkowy", Colors.Teal);
 
-        public static readonly Pylek Cząbrowy = new Pylek(15, "Cząbrowy", KnownColor.Maroon);
+            Pylek Cząbrowy = new Pylek(15, "Cząbrowy", Colors.Maroon);
 
-        public static readonly Pylek Manuka = new Pylek(16, "Manuka", KnownColor.SkyBlue);
+            Pylek Manuka = new Pylek(16, "Manuka", Colors.SkyBlue);
 
-        public static readonly Pylek Sadowniczy = new Pylek(17, "Sadowniczy", KnownColor.Olive);
+            Pylek Sadowniczy = new Pylek(17, "Sadowniczy", Colors.Olive);
 
-
+        }
 
         //z czego zmieniamy w co
-        public static readonly SortedList<KnownColor, Pylek> KolorPylkowList = new SortedList<KnownColor, Pylek>();
+        //public static readonly SortedList<Color, Pylek> KolorPylkowList = new SortedList<Color, Pylek>();
         public static readonly SortedList<string, Pylek> NazwyPylkowList = new SortedList<string, Pylek>();
         public static readonly SortedList<int, Pylek> NumberList = new SortedList<int, Pylek>();
 
-        private readonly int numer;
-        private readonly string name;
-        private readonly KnownColor color;
+        public int numer;
+        public string name { get; set; }
+        public Color color { get; set; }        
 
-
-        private Pylek(int numer, string name, KnownColor color)
+        
+        public Pylek(int numer, string name, Color color)
         {
             this.numer = numer;
             this.name = name;
-            this.color = color;
-            KolorPylkowList.Add(color, this);
+            this.color = color;            
+            //KolorPylkowList.Add(color, this);
             NazwyPylkowList.Add(name, this);
             NumberList.Add(numer, this);
         }
 
 
-        public static implicit operator Pylek(KnownColor color) //zamieniamy  color->pylek
+        /*public static implicit operator Pylek(Color color) //zamieniamy  color->pylek
         {
-            return KolorPylkowList[color];
-        }
+            //return KolorPylkowList[color];            
+        }*/
 
 
-        public static implicit operator KnownColor(Pylek pylek) //zamieniamy pylek->color
+        public static implicit operator Color(Pylek pylek) //zamieniamy pylek->color
         {
             return pylek.color;
         }

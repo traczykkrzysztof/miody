@@ -23,63 +23,53 @@ namespace APP.View
         private Point? currentPoint = null;
         private List<int> przedzial;
 
+        private string saveFileName = "Bitmapa";
+
         public CounturSelection( Contour a )
         {
             InitializeComponent();
 
             przedzial = new List<int>();
-            przedzial.Add(0); //todo: sprawdzic
-            
-            // POTRZEBNA ZMIANA z klasy Pylek
-            ListColors.ItemsSource = Pylki.getTypes();
-            //ListColors.ItemsSource = Pylek.KolorPylkowList;
+            przedzial.Add(0);
+
+            Pylek.init();
+            ListColors.ItemsSource = Pylek.NazwyPylkowList.Values;
         }
 
         private void Close_Click(object sender, RoutedEventArgs e)
         {
             // sprawdzić czy zapisano zmiany
-            this.Close();
+            this.Hide();
         }
 
         private void LoadContours_Click(object sender, RoutedEventArgs e)
-        {
-            // Create an instance of the open file dialog box.
+        {            
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
-            // Set filter options and filter index.
             openFileDialog1.Filter = "Bitmapa (*.bmp)|*.bmp|Plik konturu (*.txt)|*.txt ";
             openFileDialog1.FilterIndex = 1;
 
-            // Call the ShowDialog method to show the dialog box.
             bool? userClickedOK = openFileDialog1.ShowDialog();
-
-            // Process input if the user clicked OK.
+            
             if (userClickedOK == true)
             {
                 BitmapImage bitmapImage = new BitmapImage(new Uri(openFileDialog1.FileName));
 
                 CanvasContour.Width = bitmapImage.Width;
                 CanvasContour.Height = bitmapImage.Height;
-                CanvasContourBackground.ImageSource = bitmapImage;
-
-                //Width = bitmapImage.Width + 100;
-                //Height = bitmapImage.Height + 80;
+                CanvasContourBackground.ImageSource = bitmapImage;                
             }
         }
 
         private void LoadBackground_Click(object sender, RoutedEventArgs e)
-        {
-            // Create an instance of the open file dialog box.
+        {            
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
-
-            // Set filter options and filter index.
+            
             openFileDialog1.Filter = "Obrazy (*.jpeg;*.jpg;*.bmp;*.png)|*.jpeg;*.jpg;*.bmp;*.png";
             openFileDialog1.FilterIndex = 1;
-
-            // Call the ShowDialog method to show the dialog box.
+            
             bool? userClickedOK = openFileDialog1.ShowDialog();
-
-            // Process input if the user clicked OK.
+            
             if (userClickedOK == true)
             {
                 BitmapImage bitmapImage = new BitmapImage(new Uri(openFileDialog1.FileName));
@@ -87,17 +77,11 @@ namespace APP.View
                 CanvasContour.Width = bitmapImage.Width;
                 CanvasContour.Height = bitmapImage.Height;
                 CanvasContourBackground.ImageSource = bitmapImage;
-
-                //Width = bitmapImage.Width + 100;
-                //Height = bitmapImage.Height + 80;
             }
         }
 
         private void TabelaKolorowShow_Click(object sender, RoutedEventArgs e)
-        {
-            //todo: if (przedzial.Count > 2) ?
-            //CanvasContour.Children.RemoveRange(przedzial[przedzial.Count - 2], przedzial[przedzial.Count - 1] - przedzial[przedzial.Count - 2]);
-            //przedzial.RemoveRange(przedzial.Count - 1, 1);            
+        {                  
             if (ListColors.Visibility == Visibility.Collapsed)
                 ListColors.Visibility = Visibility.Visible;
             else
@@ -122,8 +106,7 @@ namespace APP.View
                     
                     line.HorizontalAlignment = HorizontalAlignment.Left;
                     line.VerticalAlignment = VerticalAlignment.Center;
-
-                    line.SnapsToDevicePixels = true;
+                    
                     line.SetValue(RenderOptions.EdgeModeProperty, EdgeMode.Aliased);
 
                     currentPoint = e.GetPosition(CanvasContour);
@@ -162,22 +145,19 @@ namespace APP.View
         private void SaveContours_Click(object sender, RoutedEventArgs e)
         {
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-
-            // Set filter options and filter index.
+            
             saveFileDialog1.Filter = "Bitmapa (*.bmp)|*.bmp|Plik konturu (*.txt)|*.txt ";
             saveFileDialog1.FilterIndex = 1;
-            saveFileDialog1.FileName = "Bitmapa";
+            saveFileDialog1.FileName = saveFileName;
 
-            // Call the ShowDialog method to show the dialog box.
             bool? userClickedOK = saveFileDialog1.ShowDialog();
 
-            // Process input if the user clicked OK.
             if (userClickedOK == true)
             {
-                //CanvasContourBackground.ImageSource = null;
-                CanvasContourBackground.Opacity = 0;
-
                 string path = saveFileDialog1.FileName;
+                saveFileName = System.IO.Path.GetFileName(path);
+
+                CanvasContourBackground.Opacity = 0;                
 
                 FileStream fs = new FileStream(path, FileMode.Create);
                 Rect prostokat = VisualTreeHelper.GetDescendantBounds(CanvasContour);
@@ -218,7 +198,9 @@ namespace APP.View
         {
             var item = (sender as ListView).SelectedItem;
             if (item != null)
-                brushColor = (item as Pylki).Color;
+            {
+                brushColor = new SolidColorBrush((item as Pylek).color);
+            }            
         }
 
         protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
@@ -226,28 +208,45 @@ namespace APP.View
             e.Cancel = true;
             this.Hide();            
         }
-    }
 
-
-    public class Pylki
-    {
-        public string Name { get; set; }
-        public string HexColor { get; set; }
-        public Brush Color { get; set; }
-
-        public override string ToString()
-        {
-            return Name + " -> " + HexColor + " -> " + Color.ToString();
+        private void Undo_Executed(object sender, ExecutedRoutedEventArgs e)
+        {            
+            if (przedzial.Count >= 2) { 
+                CanvasContour.Children.RemoveRange(przedzial[przedzial.Count - 2], przedzial[przedzial.Count - 1] - przedzial[przedzial.Count - 2]);
+                przedzial.RemoveRange(przedzial.Count - 1, 1);
+            }
         }
 
-        public static List<Pylki> getTypes()
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            List<Pylki> types = new List<Pylki>();
-            types.Add(new Pylki() { Name = "Rzepakowy", HexColor = "#00ff00", Color = Brushes.Green});
-            types.Add(new Pylki() { Name = "Red", HexColor = "#ff0000", Color = Brushes.Red });
-            types.Add(new Pylki() { Name = "Blue", HexColor = "#0000ff", Color = Brushes.Blue});
+            CanvasContour.Children.Clear();
+            przedzial.Clear(); 
+            przedzial.Add(0);
+        }
 
-            return types;
+        private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            if (e.Delta > 0)
+            {
+                CanvasContourScale.ScaleX *= 1.1;
+                CanvasContourScale.ScaleY *= 1.1;                     
+                if (CanvasContourScale.ScaleX > 3)
+                {
+                    CanvasContourScale.ScaleX = 3;
+                    CanvasContourScale.ScaleY = 3;
+                }
+            }
+            else
+            {                
+                CanvasContourScale.ScaleX /= 1.1;
+                CanvasContourScale.ScaleY /= 1.1;
+                if (CanvasContourScale.ScaleX < 1)
+                {
+                    CanvasContourScale.ScaleX = 1;
+                    CanvasContourScale.ScaleY = 1;
+                }
+            }
+            e.Handled = true;      
         }
     }
 }
