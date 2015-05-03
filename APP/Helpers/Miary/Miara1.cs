@@ -13,8 +13,8 @@ namespace APP.Helpers.Miary
             static double miara1(int[,] tab1, int[,] tab2)
             {
                 int iloczyn = 0;
-                int suma = 0;
-                double Result = iloczyn / suma;
+                int suma = 0; 
+                double Result = iloczyn / suma; // todo fixme please 
 
                 for (int i = 0; i < tab1.GetLength(0); i++)
                 {

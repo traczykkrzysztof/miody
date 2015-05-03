@@ -1,10 +1,23 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
+using System.Windows.Markup;
 
-namespace APP.Helpers
+namespace APP.Model
 {
     public sealed class Pylek //nie mozna po  niej dziedziczyc
     {
+        public static readonly SortedList<KnownColor, Pylek> KolorPylkowList = new SortedList<KnownColor, Pylek>();
+        public static readonly SortedList<string, Pylek> NazwyPylkowList = new SortedList<string, Pylek>();
+        public static readonly SortedList<int, Pylek> NumberList = new SortedList<int, Pylek>();
+
+        private static readonly HashSet<Pylek> _values = new HashSet<Pylek>();
+
+        public static IEnumerable<Pylek> Values
+        {
+            get { return _values; }
+        }
+
+
         public static readonly Pylek Rzepakowy = new Pylek(1, "Rzepakowy", KnownColor.Pink);
 
         public static readonly Pylek Spadziowy = new Pylek(2, "Spadziowy", KnownColor.Cyan);
@@ -41,36 +54,48 @@ namespace APP.Helpers
 
 
 
-        //z czego zmieniamy w co
-        public static readonly SortedList<KnownColor, Pylek> KolorPylkowList = new SortedList<KnownColor, Pylek>();
-        public static readonly SortedList<string, Pylek> NazwyPylkowList = new SortedList<string, Pylek>();
-        public static readonly SortedList<int, Pylek> NumberList = new SortedList<int, Pylek>();
-
-        private readonly int numer;
-        private readonly string name;
-        private readonly KnownColor color;
+        private readonly int _numer;
+        private readonly string _name;
+        private readonly KnownColor _color;
 
 
         private Pylek(int numer, string name, KnownColor color)
         {
-            this.numer = numer;
-            this.name = name;
-            this.color = color;
+            this._numer = numer;
+            this._name = name;
+            this._color = color;
             KolorPylkowList.Add(color, this);
             NazwyPylkowList.Add(name, this);
             NumberList.Add(numer, this);
+
+            _values.Add(this);
         }
 
 
-        public static implicit operator Pylek(KnownColor color) //zamieniamy  color->pylek
+
+
+
+        public static explicit operator Pylek(KnownColor color) //zamieniamy  color->pylek
         {
             return KolorPylkowList[color];
         }
 
 
-        public static implicit operator KnownColor(Pylek pylek) //zamieniamy pylek->color
+        public static explicit operator KnownColor(Pylek pylek) //zamieniamy pylek->color
         {
-            return pylek.color;
+            return pylek._color;
+        }
+
+
+        public static explicit operator Pylek(Color color) //zamieniamy  color->pylek
+        {
+            return KolorPylkowList[color.ToKnownColor()];
+        }
+
+
+        public static explicit operator Color(Pylek pylek) //zamieniamy pylek->color
+        {
+            return Color.FromKnownColor(pylek._color);
         }
 
 
@@ -81,7 +106,7 @@ namespace APP.Helpers
 
         public static implicit operator int(Pylek pylek) //zamieniamy  pylek->int
         {
-            return pylek.numer;
+            return pylek._numer;
         }
 
         public static implicit operator Pylek(string name) //zamieniamy  string_name->pylek
@@ -91,7 +116,7 @@ namespace APP.Helpers
 
         public static implicit operator string(Pylek pylek) //zamieniamy  pylek->string_name
         {
-            return pylek.name;
+            return pylek._name;
         }
 
     }

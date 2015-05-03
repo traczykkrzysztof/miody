@@ -5,7 +5,7 @@ namespace APP.Model
 {
     public class Contour
     {
-        public Contour()
+        public Contour() 
         {
             ContourSet=new HashSet<ContourPoint>();
         }

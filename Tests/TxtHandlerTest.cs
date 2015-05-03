@@ -1,5 +1,5 @@
 ﻿using System.IO;
-using System.Windows;
+using System.Drawing;
 using APP.Helpers.FileHandling;
 using APP.Model;
 using Xunit;
