@@ -53,7 +53,6 @@ namespace APP.Model
         public static readonly Pylek Sadowniczy = new Pylek(17, "Sadowniczy", KnownColor.Olive);
 
 
-
         private readonly int _numer;
         private readonly string _name;
         private readonly KnownColor _color;
@@ -72,12 +71,13 @@ namespace APP.Model
         }
 
 
-
-
-
-        public static explicit operator Pylek(KnownColor color) //zamieniamy  color->pylek
+        public static Pylek TryPrase(KnownColor color) //zamieniamy  color->pylek
         {
-            return KolorPylkowList[color];
+            if (KolorPylkowList.ContainsKey(color))
+            {
+                return KolorPylkowList[color];
+            }
+            return null;
         }
 
 
@@ -87,9 +87,13 @@ namespace APP.Model
         }
 
 
-        public static explicit operator Pylek(Color color) //zamieniamy  color->pylek
+        public static Pylek TryPrase(Color color) //zamieniamy  color->pylek
         {
-            return KolorPylkowList[color.ToKnownColor()];
+            if (KolorPylkowList.ContainsKey(color.ToKnownColor()))
+            {
+                return KolorPylkowList[color.ToKnownColor()];
+            }
+            return null;
         }
 
 
@@ -118,6 +122,5 @@ namespace APP.Model
         {
             return pylek._name;
         }
-
     }
 }

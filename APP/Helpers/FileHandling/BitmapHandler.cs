@@ -16,7 +16,7 @@ namespace APP.Helpers.FileHandling
 
     public class BitmapHandler : IBitmapHandler
     {
-        public Contour LoadBitmap(Bitmap bitmap)//dostaje bitmape
+        public Contour LoadBitmap(Bitmap bitmap) //dostaje bitmape
         {
             //na jednej bitmapie mamy wiele konturow, ktore roznia sie kolorem
             Contour wynikContour = new Contour();
@@ -26,15 +26,18 @@ namespace APP.Helpers.FileHandling
                 for (int j = 0; j < bitmap.Width; j++) //po ilosci pikseli w szerokosci
                 {
                     Color pixelcolor = bitmap.GetPixel(j, i);
-                 ContourPoint point = new ContourPoint()
-                     {                        
-                         Location = new Point(i, j),
-                         Type = (Pylek)pixelcolor     
-                     };
-                    wynikContour.ContourSet.Add(point);
+                    if (Pylek.TryPrase(pixelcolor) != null)
+                    {
+                        ContourPoint point = new ContourPoint()
+                        {
+                            Location = new Point(i, j),
+                            Type = Pylek.TryPrase(pixelcolor)
+                        };
+                        wynikContour.ContourSet.Add(point);
+                    }
                 }
             }
-       
+
 
             return wynikContour;
         }
