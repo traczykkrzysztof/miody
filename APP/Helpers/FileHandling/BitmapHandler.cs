@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Windows.Media;
 using System.Linq;
 using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using APP.Model;
+using Color = System.Windows.Media.Color;
 
 namespace APP.Helpers.FileHandling
 {
@@ -31,9 +33,10 @@ namespace APP.Helpers.FileHandling
             wynikContour.Bitmap = bitmap;
             for (int i = 0; i < bitmap.Height; i++) 
             {
-                for (int j = 0; j < bitmap.Width; j++) 
+                for (int j = 0; j < bitmap.Width; j++)
                 {
-                    Color pixelcolor = bitmap.GetPixel(j, i);
+                    var drawindColor = bitmap.GetPixel(j, i);
+                    Color pixelcolor = Color.FromArgb(drawindColor.A, drawindColor.R, drawindColor.G, drawindColor.B);
                     if (Pollen.TryPrase(pixelcolor) != null)
                     {
                         ContourPoint point = new ContourPoint()

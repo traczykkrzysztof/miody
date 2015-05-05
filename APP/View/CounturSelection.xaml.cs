@@ -7,14 +7,14 @@ using System.Windows.Input;
 using System.Windows.Controls;
 using System.IO;
 using System.Collections.Generic;
-using System.Drawing;
+
 using Microsoft.Win32;
 
 using APP.Model;
 using APP.Helpers;
 using Brush = System.Windows.Media.Brush;
 using Brushes = System.Windows.Media.Brushes;
-using Color = System.Drawing.Color;
+
 using Point = System.Windows.Point;
 
 namespace APP.View
@@ -37,7 +37,9 @@ namespace APP.View
             przedzial = new List<int>();
             przedzial.Add(0);
 
-            ListColors.ItemsSource = Pollen.NazwyPylkowList.Values;
+            IEnumerable<Pollen> values = Pollen.NazwyPylkowList.Values;
+
+            ListColors.ItemsSource = values;
         }
 
         private void Close_Click(object sender, RoutedEventArgs e)
