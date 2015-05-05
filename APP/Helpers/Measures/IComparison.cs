@@ -1,8 +1,8 @@
 ﻿using APP.Model;
 
-namespace APP.Helpers.Miary
+namespace APP.Helpers.Measures
 {
-    interface IComparasion
+    interface IComparison
     {
         Result GetResult(Contour a,Contour b);
     }

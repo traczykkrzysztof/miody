@@ -7,11 +7,11 @@ using APP.Model;
 
 
 
-namespace APP.Helpers.Miary
+namespace APP.Helpers.Measures
 {
     
 
-    class HausdorffDistance : IComparasion
+    class HausdorffDistance : IComparison
     {
         protected List<double> InfimumList(HashSet<ContourPoint> listaA, HashSet<ContourPoint> listaB)
         {

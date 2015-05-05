@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace APP.Helpers.Miary
+namespace APP.Helpers.Measures
 {
     class Miara1 
     {
