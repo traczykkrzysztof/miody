@@ -28,13 +28,19 @@ namespace APP.Helpers.FileHandling
         /// Zwraca kontur
         /// </returns>
         public Contour LoadTxt(TextReader reader)
-    {
+<<<<<<< HEAD
+        {
             //Pylek numero = 1;
             //Pylek kolorp = KnownColor.ActiveCaption;
             //Pylek nazwo = "rzepakowy";
             //string name;
        
+
+           
+=======
+    {
             
+>>>>>>> feature/wczytywanie_konturów_z_bitmap_i_plików_tekstowych
             Contour wynikContour = new Contour();
 
             while (reader.Peek() != -1)
