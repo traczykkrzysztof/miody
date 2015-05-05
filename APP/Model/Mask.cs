@@ -9,12 +9,12 @@ namespace APP.Model
         {
             Height = height;
             Width = width;
-            var tempMaskMap = Pylek.Values.ToDictionary(value => value, value => new bool[height, width]);
+            var tempMaskMap = Pollen.Values.ToDictionary(value => value, value => new bool[height, width]);
             MaskMap = tempMaskMap;
         }
 
         public int Width { get; private set; }
         public int Height { get; private set; }
-        public IReadOnlyDictionary<Pylek,bool[,]>  MaskMap  { get; private set; }
+        public IReadOnlyDictionary<Pollen,bool[,]>  MaskMap  { get; private set; }
     }
 }

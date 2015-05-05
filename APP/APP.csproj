@@ -60,7 +60,7 @@
     <Compile Include="Helpers\FileHandling\ContourLoader.cs" />
     <Compile Include="Helpers\MaskGenerator.cs" />
     <Compile Include="Helpers\Miary\HausdorffDistance.cs" />
-    <Compile Include="Model\Pylek.cs" />
+    <Compile Include="Model\Pollen.cs" />
     <Compile Include="Helpers\FileHandling\TxtHandler.cs" />
     <Compile Include="Helpers\FileHandling\BitmapHandler.cs" />
     <Compile Include="Helpers\FileHandling\BitmapSaver.cs" />

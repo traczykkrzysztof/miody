@@ -18,7 +18,7 @@ namespace APP.Helpers
             int height = (int) Math.Ceiling((double) contour.ContourSet.Max(point => point.Location.X));
             int width = (int)Math.Ceiling((double) contour.ContourSet.Max(point => point.Location.Y));
 
-            foreach (Pylek pylek in Pylek.Values)
+            foreach (Pollen pylek in Pollen.Values)
             {
                 Bitmap bitmap= new Bitmap(width, height);
                 Graphics graphics = Graphics.FromImage(bitmap);
