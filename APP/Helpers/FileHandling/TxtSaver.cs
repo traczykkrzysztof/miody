@@ -27,7 +27,7 @@ namespace APP.Helpers.FileHandling
             {
                 if (item != null)
                 {
-                    pylek_nazwa = (Pylek)item.Type;
+                    pylek_nazwa = (Pollen)item.Type;
                     linia = Convert.ToString(item.Location.X) + " " + Convert.ToString(item.Location.Y) + " " + Convert.ToString(pylek_nazwa);
                     writer.WriteLine(linia);
 

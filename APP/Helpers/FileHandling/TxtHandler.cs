@@ -6,7 +6,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Point = System.Windows.Point;
 
 namespace APP.Helpers.FileHandling
 {
@@ -46,7 +45,7 @@ namespace APP.Helpers.FileHandling
                      ContourPoint point = new ContourPoint()
                      {  // kazda linijka to odpowiednio współrzędna: X Y Typ pyłku ;rozna ilosc spacji
                          Location = new Point(int.Parse(line[0]), int.Parse(line[1])),
-                         Type =  (Pylek) line[2]     
+                         Type =  (Pollen) line[2]     
  
                      };
                      wynikContour.ContourSet.Add(point); 

@@ -5,7 +5,6 @@ using System.Linq;
 using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using APP.Model;
 
 namespace APP.Helpers.FileHandling
@@ -34,23 +33,20 @@ namespace APP.Helpers.FileHandling
             {
                 for (int j = 0; j < bitmap.Width; j++) 
                 {
-                    Color pixelcolor = bitmap.GetPixel(i, j);
-
-                    KnownColor znanyColor = pixelcolor.ToKnownColor();  //mamy juz enum z lista kolorów
-                    Pylek wynik = (Pylek)znanyColor; //z enuma klasy.
-
-                    //https://msdn.microsoft.com/en-us/library/system.drawing.knowncolor(v=vs.110).aspx
-                    // korzystamy z wbudowanej juz listy enum i moze zostac int jako TYP.
-                    //kolor tego konkretnego pixela
-                    ContourPoint point = new ContourPoint()
+                    Color pixelcolor = bitmap.GetPixel(j, i);
+                    if (Pollen.TryPrase(pixelcolor) != null)
+                    {
+                        ContourPoint point = new ContourPoint()
                         {
-                            Location = new System.Windows.Point(i, j),
-                            Type = wynik,
+                            Location = new Point(i, j),
+                            Type = Pollen.TryPrase(pixelcolor)
                         };
-                    wynikContour.ContourSet.Add(point);
+                        wynikContour.ContourSet.Add(point);
+                    }
+                   
                 }
             }
-
+       
 
             return wynikContour;
         }
