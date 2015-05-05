@@ -1,13 +1,21 @@
 ﻿using System;
 using System.Windows;
-using APP.Model;
-using Microsoft.Win32;
-using System.Windows.Media.Imaging;
-using System.Drawing;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Input;
+using System.Windows.Controls;
 using System.IO;
+using System.Collections.Generic;
+using System.Drawing;
+using Microsoft.Win32;
+
+using APP.Model;
+using APP.Helpers;
+using Brush = System.Windows.Media.Brush;
+using Brushes = System.Windows.Media.Brushes;
+using Color = System.Drawing.Color;
+using Point = System.Windows.Point;
 
 namespace APP.View
 {
@@ -16,137 +24,147 @@ namespace APP.View
     /// </summary>
     public partial class CounturSelection : Window
     {
+        private Brush brushColor;
+        private Point? currentPoint = null;
+        private List<int> przedzial;
+
+        private string saveFileName = "Bitmapa";
+
         public CounturSelection( Contour a )
         {
             InitializeComponent();
+
+            przedzial = new List<int>();
+            przedzial.Add(0);
+
+            ListColors.ItemsSource = Pollen.NazwyPylkowList.Values;
         }
 
         private void Close_Click(object sender, RoutedEventArgs e)
         {
             // sprawdzić czy zapisano zmiany
-            this.Close();
+            this.Hide();
         }
 
         private void LoadContours_Click(object sender, RoutedEventArgs e)
-        {
-            // Create an instance of the open file dialog box.
+        {            
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
-            // Set filter options and filter index.
             openFileDialog1.Filter = "Bitmapa (*.bmp)|*.bmp|Plik konturu (*.txt)|*.txt ";
             openFileDialog1.FilterIndex = 1;
 
-            // Call the ShowDialog method to show the dialog box.
             bool? userClickedOK = openFileDialog1.ShowDialog();
-
-            // Process input if the user clicked OK.
+            
             if (userClickedOK == true)
             {
                 BitmapImage bitmapImage = new BitmapImage(new Uri(openFileDialog1.FileName));
 
-                myCanvas.Width = bitmapImage.Width;
-                myCanvas.Height = bitmapImage.Height;
-                CanvasImage.ImageSource = bitmapImage;
-
-                Width = bitmapImage.Width + 100;
-                Height = bitmapImage.Height + 80;
+                CanvasContour.Width = bitmapImage.Width;
+                CanvasContour.Height = bitmapImage.Height;
+                CanvasContourBackground.ImageSource = bitmapImage;                
             }
         }
 
         private void LoadBackground_Click(object sender, RoutedEventArgs e)
-        {
-            // Create an instance of the open file dialog box.
+        {            
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
-
-            // Set filter options and filter index.
+            
             openFileDialog1.Filter = "Obrazy (*.jpeg;*.jpg;*.bmp;*.png)|*.jpeg;*.jpg;*.bmp;*.png";
             openFileDialog1.FilterIndex = 1;
-
-            // Call the ShowDialog method to show the dialog box.
+            
             bool? userClickedOK = openFileDialog1.ShowDialog();
-
-            // Process input if the user clicked OK.
+            
             if (userClickedOK == true)
             {
                 BitmapImage bitmapImage = new BitmapImage(new Uri(openFileDialog1.FileName));
 
-                myCanvas.Width = bitmapImage.Width;
-                myCanvas.Height = bitmapImage.Height;
-                CanvasImage.ImageSource = bitmapImage;
-
-                Width = bitmapImage.Width + 100;
-                Height = bitmapImage.Height + 80;
+                CanvasContour.Width = bitmapImage.Width;
+                CanvasContour.Height = bitmapImage.Height;
+                CanvasContourBackground.ImageSource = bitmapImage;
             }
         }
 
         private void TabelaKolorowShow_Click(object sender, RoutedEventArgs e)
-        {
-            if (ListaKolorów.Visibility == Visibility.Hidden)
-                ListaKolorów.Visibility = Visibility.Visible;
+        {                  
+            if (ListColors.Visibility == Visibility.Collapsed)
+                ListColors.Visibility = Visibility.Visible;
             else
-                ListaKolorów.Visibility = Visibility.Hidden;
-        }
+                ListColors.Visibility = Visibility.Collapsed;            
+        }        
 
-        System.Windows.Point? currentPoint = null;
-
-        private void NewContourImage_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
+        private void CanvasContour_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
         {
             if (currentPoint != null)
             {
+                if (brushColor == null) return;
                 if (e.LeftButton == MouseButtonState.Pressed)
                 {
                     Line line = new Line();
 
-                    line.Stroke = System.Windows.SystemColors.WindowFrameBrush;
+                    line.Stroke = brushColor;
+                    line.StrokeThickness = 1;
                     line.X1 = currentPoint.Value.X;
                     line.Y1 = currentPoint.Value.Y;
-                    line.X2 = e.GetPosition(myCanvas).X;
-                    line.Y2 = e.GetPosition(myCanvas).Y;
-
+                    line.X2 = e.GetPosition(CanvasContour).X;
+                    line.Y2 = e.GetPosition(CanvasContour).Y;
+                    
                     line.HorizontalAlignment = HorizontalAlignment.Left;
                     line.VerticalAlignment = VerticalAlignment.Center;
+                    
+                    line.SetValue(RenderOptions.EdgeModeProperty, EdgeMode.Aliased);
 
-                    currentPoint = e.GetPosition(myCanvas);
-
-                    myCanvas.Visibility = Visibility.Visible;
-                    myCanvas.Children.Add(line);
+                    currentPoint = e.GetPosition(CanvasContour);
+                    
+                    CanvasContour.Children.Add(line);
                 }
             }
 
         }
 
-        private void NewContourImage_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void CanvasContour_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             if (e.ButtonState == MouseButtonState.Pressed)
-                currentPoint = e.GetPosition(myCanvas);
+                currentPoint = e.GetPosition(CanvasContour);
         }
 
-        private void NewContourImage_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void CanvasContour_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             currentPoint = null;
+            przedzial.Add(CanvasContour.Children.Count);
+        }
+
+        private void CanvasContour_MouseLeave(object sender, MouseEventArgs e)
+        {
+            currentPoint = null;            
+        }
+
+        private void CanvasContour_MouseEnter(object sender, MouseEventArgs e)
+        {            
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                currentPoint = e.GetPosition(CanvasContour);
+            }
         }
 
         private void SaveContours_Click(object sender, RoutedEventArgs e)
         {
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-
-            // Set filter options and filter index.
+            
             saveFileDialog1.Filter = "Bitmapa (*.bmp)|*.bmp|Plik konturu (*.txt)|*.txt ";
             saveFileDialog1.FilterIndex = 1;
+            saveFileDialog1.FileName = saveFileName;
 
-            // Call the ShowDialog method to show the dialog box.
             bool? userClickedOK = saveFileDialog1.ShowDialog();
 
-            // Process input if the user clicked OK.
             if (userClickedOK == true)
             {
-                //CanvasImage.ImageSource = null;
-                CanvasImage.Opacity = 0;
-
                 string path = saveFileDialog1.FileName;
+                saveFileName = System.IO.Path.GetFileName(path);
+
+                CanvasContourBackground.Opacity = 0;                
 
                 FileStream fs = new FileStream(path, FileMode.Create);
-                Rect prostokat = VisualTreeHelper.GetDescendantBounds(myCanvas);
+                Rect prostokat = VisualTreeHelper.GetDescendantBounds(CanvasContour);
 
                 RenderTargetBitmap bmp = new RenderTargetBitmap((int)prostokat.Width, (int)prostokat.Height, 96, 96, PixelFormats.Pbgra32);
 
@@ -154,22 +172,91 @@ namespace APP.View
 
                 using (DrawingContext dc = dv.RenderOpen())
                 {
-                    VisualBrush vb = new VisualBrush(myCanvas);
-                    dc.DrawRectangle(vb, null, new Rect(new System.Windows.Point(), prostokat.Size));
+                    VisualBrush vb = new VisualBrush(CanvasContour);
+                    dc.DrawRectangle(Brushes.White, null, new Rect(prostokat.Size));                    
+                    dc.DrawRectangle(vb, null, new Rect(new System.Windows.Point(), prostokat.Size));                    
                 }
 
                 bmp.Render(dv);
 
-                BitmapEncoder encoder = new PngBitmapEncoder();
+                BitmapEncoder encoder = new BmpBitmapEncoder();
                 encoder.Frames.Add(BitmapFrame.Create(bmp));
                 encoder.Save(fs);
                 fs.Close();
 
-                CanvasImage.Opacity = 1;
+                CanvasContourBackground.Opacity = 1;
             }
+        }
 
+        private void SaveContourAndLoad1_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
 
+        private void SaveContourAndLoad2_Click(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
 
+        private void ListViewTypes_PreviewMouseLeftButtonUp_1(object sender, MouseButtonEventArgs e)
+        {
+            var listView = sender as ListView;
+            if (listView != null)
+            {
+                var item = listView.SelectedItem;
+                if (item != null)
+                {
+                    Color color = (Color)((Pollen)item);
+                    System.Windows.Media.Color mediaColor = System.Windows.Media.Color.FromArgb(color.A,color.R,color.G,color.B);
+                    brushColor = new SolidColorBrush(mediaColor);
+                }
+            }
+        }
+
+        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+            this.Hide();            
+        }
+
+        private void Undo_Executed(object sender, ExecutedRoutedEventArgs e)
+        {            
+            if (przedzial.Count >= 2) { 
+                CanvasContour.Children.RemoveRange(przedzial[przedzial.Count - 2], przedzial[przedzial.Count - 1] - przedzial[przedzial.Count - 2]);
+                przedzial.RemoveRange(przedzial.Count - 1, 1);
+            }
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            CanvasContour.Children.Clear();
+            przedzial.Clear(); 
+            przedzial.Add(0);
+        }
+
+        private void ScrollViewer_PreviewMouseWheel(object sender, MouseWheelEventArgs e)
+        {
+            if (e.Delta > 0)
+            {
+                CanvasContourScale.ScaleX *= 1.1;
+                CanvasContourScale.ScaleY *= 1.1;                     
+                if (CanvasContourScale.ScaleX > 3)
+                {
+                    CanvasContourScale.ScaleX = 3;
+                    CanvasContourScale.ScaleY = 3;
+                }
+            }
+            else
+            {                
+                CanvasContourScale.ScaleX /= 1.1;
+                CanvasContourScale.ScaleY /= 1.1;
+                if (CanvasContourScale.ScaleX < 1)
+                {
+                    CanvasContourScale.ScaleX = 1;
+                    CanvasContourScale.ScaleY = 1;
+                }
+            }
+            e.Handled = true;      
         }
     }
 }

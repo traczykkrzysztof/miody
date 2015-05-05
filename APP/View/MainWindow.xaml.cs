@@ -25,20 +25,30 @@ namespace APP
     public partial class MainWindow : Window
     {
         private ContourLoader _contourLoader;
+
+        private Window ContourSelectionWindow;
+        private Window ResultWindow;
+
         public MainWindow(ContourLoader contourLoader)
         {
             _contourLoader = contourLoader;
             InitializeComponent();
+
+            Application.Current.ShutdownMode = System.Windows.ShutdownMode.OnMainWindowClose;
         }
 
         private void ContourSelectionOpen_Click(object sender, RoutedEventArgs e)
-        {
-            new CounturSelection(new Contour()).Show();
+        {            
+            if (ContourSelectionWindow == null)
+                ContourSelectionWindow = new CounturSelection(new Contour());
+            ContourSelectionWindow.Show();
         }
 
         private void ResultOpen_Click(object sender, RoutedEventArgs e)
-        {            
-            new ResultWindow(null, null).Show();
+        {
+            if (ResultWindow == null)
+                ResultWindow = new ResultWindow(null, null);
+            ResultWindow.Show();
         }
     }
 }

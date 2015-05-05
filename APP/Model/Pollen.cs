@@ -4,7 +4,7 @@ using System.Windows.Markup;
 
 namespace APP.Model
 {
-    public sealed class Pollen //nie mozna po  niej dziedziczyc
+    public sealed class     Pollen //nie mozna po  niej dziedziczyc
     {
         public static readonly SortedList<KnownColor, Pollen> KolorPylkowList = new SortedList<KnownColor, Pollen>();
         public static readonly SortedList<string, Pollen> NazwyPylkowList = new SortedList<string, Pollen>();

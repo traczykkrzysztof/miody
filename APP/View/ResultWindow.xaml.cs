@@ -17,7 +17,13 @@ namespace APP.View
 
         private void Close_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            this.Hide();
+        }
+
+        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+        {
+            e.Cancel = true;
+            this.Hide();            
         }
     }
 }
