@@ -1,0 +1,43 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using APP.Helpers;
+using APP.Model;
+
+namespace APP.Helpers.Measures
+{
+    class HammingDistance
+    {
+        int licznik = 0;
+        protected HashSet<ContourPoint> listawspólnych(HashSet<ContourPoint> listaA, HashSet<ContourPoint> listaB)
+        {
+            HashSet<ContourPoint> listaC = new HashSet<ContourPoint>();
+
+            foreach (ContourPoint item in listaA)
+            {
+                foreach (ContourPoint item2 in listaB)
+                {
+                    if (item.Type == item2.Type && item.Location == item2.Location)
+                    {
+                        listaC.Add(item);
+                    }
+                    else
+                    {
+                        licznik++;
+                    }
+                }
+            }
+            return listaC;
+        }
+        public double Distance(HashSet<ContourPoint> listaA, HashSet<ContourPoint> listaB)
+        {
+            double wynik=0;
+            HashSet<ContourPoint> listaC = listawspólnych(listaA, listaB);
+            wynik = licznik / (listaA.Count + listaB.Count - listaC.Count);
+            licznik = 0;
+            return wynik;
+        }
+    }
+}
